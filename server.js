@@ -9,10 +9,15 @@ app.use('/articles', articleRouter) /* all content will be in this directory */
 app.get('/', (req, res) => {
     const articles = [{
         title: 'Test Article',
-        createdAt: Date.now(),
+        createdAt: new Date(),
         description: 'Test description'
+    },
+    {
+        title: 'Test Article 2',
+        createdAt: new Date(),
+        description: 'Test description 2'
     }]
-    res.render('index', { articles: articles }) 
+    res.render('articles/index', { articles: articles }) 
 })
 
 app.listen(5000)
