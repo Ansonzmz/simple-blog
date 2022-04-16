@@ -1,10 +1,24 @@
 const express = require('express')
+const mongoClient = require('mongoose')
 const articleRouter = require('./routes/articles')
 const app = express()
 
+mongoClient.connect('mongodb://localhost/blog', 
+
+    /*{ userNewUrlParser: true, useUnifiedTopology: true }*/
+
+    /*process.env.RESTREVIEWS_DB_URI,*/
+    {
+        maxPoolSize:50,
+        wtimeoutMS:2500,
+        useNewUrlParser:true
+    } 
+)
+
 app.set('view engine', 'ejs')
 
-app.use('/articles', articleRouter) /* all content will be in this directory */
+app.use(express.urlencoded({extended: false}))
+
 
 app.get('/', (req, res) => {
     const articles = [{
@@ -19,5 +33,7 @@ app.get('/', (req, res) => {
     }]
     res.render('articles/index', { articles: articles }) 
 })
+
+app.use('/articles', articleRouter) /* all content will be in this directory */
 
 app.listen(5000)
