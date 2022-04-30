@@ -7,12 +7,12 @@
 
 <div class="form-group">
     <label for="description">Description</label>
-    <textarea name="description" id="description" class="form-control"></textarea><!-- required when submitting -->
+    <textarea name="description" id="description" class="form-control"><%= article.description %></textarea><!-- required when submitting -->
 </div>
 
 <div class="form-group">
     <label for="markdown">Markdown</label>
-    <textarea name="markdown" id="markdown" class="form-control"></textarea><!-- required when submitting -->
+    <textarea required name="markdown" id="markdown" class="form-control"><%= article.markdown %></textarea><!-- required when submitting -->
 </div>
 
 <a href="/" class="btn btn-secondary">Cancel</a>
